@@ -14,7 +14,7 @@ model Material {
   title       String
   description String?
   type        MaterialType
-  data        Bytes       // Store file as BLOB
+  data        Bytes     
   size        Int
   uploadDate  DateTime    @default(now())
   published   Boolean     @default(false)
