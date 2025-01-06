@@ -95,6 +95,16 @@ Il server Node.js sarà disponibile sulla porta configurata (default: `3000`).
 
 ---
 
+### 6. login creati tramite dataloader:
+
+1. `admin@example.com` password: `securepassword`
+2. `teacher@example.com` password: `teacher123`
+3. `student@example.com` password: `student123`
+
+se volete registrare altri utenti andare sulla rotta `/auth/register`
+
+---
+
 ## Endpoints disponibili
 
 ### Backend Java (porta 8082)
