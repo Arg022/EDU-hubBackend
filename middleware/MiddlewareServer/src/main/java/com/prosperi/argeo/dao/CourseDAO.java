@@ -34,8 +34,8 @@ public class CourseDAO {
             ps.setString(7, course.getSyllabus());
             ps.setInt(8, course.getMaxStudents());
             ps.setString(9, course.getLevel().name().toLowerCase());
-
             ps.executeUpdate();
+            course.setId(id);
         } catch (SQLException e) {
             throw new RuntimeException("Error adding course", e);
         }

@@ -72,6 +72,7 @@ public class DataLoader {
                 .level(CourseLevel.BEGINNER)
                 .build();
         courseService.createCourse(course);
+        System.out.println("Course created with ID: " + course.getId());
 
         // Create subject
         Subject subject = Subject.builder()
@@ -80,6 +81,7 @@ public class DataLoader {
                 .description("Understand the principles of OOP.")
                 .build();
         subjectService.createSubject(subject);
+        System.out.println("Subject created with ID: " + subject.getId());
 
         // Create lesson
         Lesson lesson = Lesson.builder()
@@ -93,6 +95,7 @@ public class DataLoader {
                 .endTime(LocalTime.of(12, 0))
                 .build();
         lessonService.createLesson(lesson);
+        System.out.println("Lesson created with ID: " + lesson.getId());
 
         // Create enrollment
         Enrollment enrollment = Enrollment.builder()
@@ -103,6 +106,7 @@ public class DataLoader {
                 .status(EnrollmentStatus.ACTIVE)
                 .build();
         enrollmentService.createEnrollment(enrollment);
+        System.out.println("Enrollment created with ID: " + enrollment.getId());
 
         // Create teaching
         Teaching teaching = Teaching.builder()
@@ -114,6 +118,7 @@ public class DataLoader {
                 .endDate(course.getEndDate())
                 .build();
         teachingService.createTeaching(teaching);
+        System.out.println("Teaching created with ID: " + teaching.getId());
 
         // Create attendance
         Attendance attendance = Attendance.builder()
@@ -126,10 +131,13 @@ public class DataLoader {
                 .recordTime(LocalDateTime.now())
                 .build();
         attendanceService.createAttendance(attendance);
+        System.out.println("Attendance created with ID: " + attendance.getId());
 
         // Create quiz
         Quiz quiz = Quiz.builder()
                 .id(UUID.randomUUID())
+                .courseId(course.getId()) // Set the course_id for the quiz
+                .creatorId(teacher.getId()) // Set the creator_id for the quiz
                 .title("Sample Quiz")
                 .description("This is a sample quiz")
                 .durationMinutes(30)
@@ -141,8 +149,14 @@ public class DataLoader {
         questions.add(createQuestion("What is the capital of France?", 1.0f, QuestionType.MULTIPLE_CHOICE));
         questions.add(createQuestion("What is 2 + 2?", 1.0f, QuestionType.OPEN_ENDED));
 
+        // Initialize answers list for each question
+        for (Question question : questions) {
+            question.setAnswers(new ArrayList<>());
+        }
+
         // Create quiz with questions
         quizService.createQuiz(quiz, questions);
+        System.out.println("Quiz created with ID: " + quiz.getId());
 
         // Create notification
         Notification notification = Notification.builder()
@@ -157,6 +171,7 @@ public class DataLoader {
                 .readDate(null)
                 .build();
         notificationService.createNotification(notification);
+        System.out.println("Notification created with ID: " + notification.getId());
     }
 
     private static User createUser(UserService userService, String email, String password, String firstName, String lastName, UserRole role, String phone, String address) {
@@ -173,6 +188,7 @@ public class DataLoader {
                 .lastAccess(LocalDateTime.now())
                 .build();
         userService.createUser(user);
+        System.out.println("User created with ID: " + user.getId());
         return user;
     }
 
@@ -182,6 +198,7 @@ public class DataLoader {
                 .text(text)
                 .score(score)
                 .questionType(questionType)
+                .answers(new ArrayList<>()) 
                 .build();
     }
 }
