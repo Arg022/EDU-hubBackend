@@ -14,14 +14,13 @@ import com.prosperi.argeo.controller.v1.StudentAnswerController;
 import com.prosperi.argeo.controller.v1.SubjectController;
 import com.prosperi.argeo.controller.v1.TeachingController;
 import com.prosperi.argeo.controller.v1.UserController;
-import com.prosperi.argeo.util.DataLoader;
 
 import io.javalin.Javalin;
 
 public class Main {
     public static void main(String[] args) {
 
-        DataLoader.loadInitialData();
+        //DataLoader.loadInitialData();
 
         Javalin app = Javalin.create(config -> {
             config.plugins.enableCors(cors -> cors.add(it -> it.anyHost()));

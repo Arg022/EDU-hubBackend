@@ -135,11 +135,11 @@ se volete registrare altri utenti andare sulla rotta `/auth/register`
 ### Cartella principale
 
 - `backend/`: Contiene il backend Node.js.
-- `middleware/`: Contiene il server Java.
+- `middleware/`: Contiene il backend/middelware Java.
 
 ### Database
-
-- `database/learning_platform.sql`: Script SQL per la per salvare e gestire gli utenti quiz corsi ed altro.
+1. crea 2 database chiamati `learning_platforms` e learning_materials
+- `database/learning_platforms.sql`: Script SQL per la per salvare e gestire gli utenti quiz corsi ed altro.
 - `database/learning_materials.sql`: Script SQL per salvare i materiali didattici.
 
 ---

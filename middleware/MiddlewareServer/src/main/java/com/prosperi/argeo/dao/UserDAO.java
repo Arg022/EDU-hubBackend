@@ -28,11 +28,11 @@ public class UserDAO {
             ps.setString(3, user.getPassword());
             ps.setString(4, user.getFirstName());
             ps.setString(5, user.getLastName());
-            ps.setString(6, user.getRole().name().toLowerCase()); // Usa il nome dell'enum
+            ps.setString(6, user.getRole().name().toLowerCase());
             ps.setDate(7, Date.valueOf(user.getRegistrationDate()));
             ps.setString(8, user.getPhone());
             ps.setString(9, user.getAddress());
-            ps.setTimestamp(10, Timestamp.valueOf(user.getLastAccess())); // Passa il valore corretto di lastAccess
+            ps.setTimestamp(10, Timestamp.valueOf(user.getLastAccess()));
 
             ps.executeUpdate();
         } catch (SQLException e) {
